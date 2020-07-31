@@ -35,6 +35,11 @@ module.exports = function(RED) {
                     msg.payload.power = Math.round(msg.payload.power_mw / 1000);
                 }
 
+                // Wrapper for Discovergy Meter (see sample flow!)
+                if(typeof msg.payload["1.8.0"] !== "undefined") {
+                  msg.payload.energy = msg.payload["1.8.0"];
+                }
+
                 if(typeof msg.payload.energy !== "undefined") {
                   power = (msg.payload.energy - energy) / (3600000/(ts - updated));
                   energy_new = msg.payload.energy;

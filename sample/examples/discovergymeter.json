@@ -1,0 +1,1 @@
+[{"id":"417a04d0.ea2c4c","type":"discovergy-meter","z":"3102f4c5.b60a7c","DISCOVERGY_ACCOUNT":"demo@discovergy.com","DISCOVERGY_PASSWORD":"demo","meterId":"af4a1979c8404c3182e95d593dee1860","x":590,"y":140,"wires":[["bf814178.8ccf9"]]}]
