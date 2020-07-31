@@ -1,0 +1,44 @@
+{
+  "name": "red-contrib-virtualmeter",
+  "version": "0.5.2",
+  "description": "Virtual Meter Node to be used within Corrently Ecosystem (German Electricity Grid)",
+  "main": "virtualmeter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energychain/node-red-contrib-virtualmeter.git"
+  },
+  "funding": {
+    "type": "corporation",
+    "url": "https://www.stromdao.de/crowdfunding/info"
+  },
+  "keywords": [
+    "node-red",
+    "contrib",
+    "virtualmeter",
+    "smartmeter",
+    "electricity",
+    "balancing",
+    "stromdao",
+    "corrently",
+    "casa"
+  ],
+  "author": "STROMDAO GmbH <kontakt@stromdao.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/energychain/node-red-contrib-virtualmeter/issues"
+  },
+  "homepage": "https://github.com/energychain/node-red-contrib-virtualmeter#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "lodash": "^4.17.19",
+    "querystring": "^0.2.0"
+  },
+  "node-red": {
+    "nodes": {
+      "virtualmeter": "virtualmeter.js"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType('virtualmeter',{
+        category: 'Corrently',
+        color: '#006C32',
+        defaults: {
+            zip: {value:"69256"},
+            name: {value: null},
+            energypricein: {value: 0},
+            energypriceout: {value: 0}
+        },
+        inputs:1,
+        outputs:4,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'VirtualMeter';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="virtualmeter">
+    <div class="form-row">
+          <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+          <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
+        <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+    <div class="form-row">
+          <label for="node-input-energypricein"><i class="icon-tag"></i> Energiepreis pro kWh (Bezug/In)</label>
+          <input type="text" id="node-input-energypricein" placeholder="(Alternativ msg.payload.energpricein)">
+    </div>
+    <div class="form-row">
+          <label for="node-input-energypriceout"><i class="icon-tag"></i> Energiepreis pro kWh (Einspeisung/Out)</label>
+          <input type="text" id="node-input-energypriceout" placeholder="(Alternativ msg.payload.energpriceout)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="virtualmeter">
+    <p>Standarized Meter Object to be used in Casa Corrently Ecosystem</p>
+    <h2>Input</h2>
+    <p>If <code>msg.payload</code> is number, than this number will be interpreted as Watt hours (Wh) to be added to meter reading.</p>
+    <p>If <code>msg.payload.energy</code> exists this will be used as new meter reading in Watt hours (Wh)</p>
+    <p>If <code>msg.payload.power</code> exists this will be used as average power (Watt) since last message</p>
+    <p>You might set energy prices per Kilo-Watt-Hour using <code>msg.payload.energypricein</code> and <code>msg.payload.energypriceout</code>.
+    <h2>Output(s)</h2>
+    <p>Each Output has all information set per the following table. However the outputs itself have different payload set to allow easy use in wiring flows.</p>
+    <table>
+        <tr><td><code>msg.energy</code></td><td>Meter Reading (Total Energy over time)</td><td>Wh</td></tr>
+        <tr><td><code>msg.power</code></td><td>Actual Power of last update</td><td>W</td></tr>
+        <tr><td><code>msg.energy_in</code></td><td>Meter Reading (Total of Energy feeded in)</td><td>Wh</td></tr>
+        <tr><td><code>msg.energy_out</code></td><td>Meter Reading (Total of Energy feeded out)</td><td>Wh</td></tr>
+        <tr><td><code>msg.energy_cost_in</code></td><td>Costs (Total of Energy feeded in)</td><td>€</td></tr>
+        <tr><td><code>msg.energy_cost_out</code></td><td>Costs (Total of Energy feeded out)</td><td>€</td></tr>
+        <tr><td><code>msg.account_in</code></td><td>Meterpoint ID for Energy In Meter</td><td>BC</td></tr>
+        <tr><td><code>msg.account_out</code></td><td>Meterpoint ID for Energy Out Meter</td><td>BC</td></tr>
+        <tr><td><code>msg.energy_in_co2</code></td><td>CO2 Footprint</td><td>g</td></tr>
+        <tr><td><code>msg.energy_out_co2</code></td><td>CO2 Compensation (avoided)</td><td>g</td></tr>
+    </table>
+    <h3>Payloads of Output Nodes</h3>
+    <table>
+      <tr><td><code>msg[0].payload</code><td>eq. <code>msg.energy</code></td></tr>
+      <tr><td><code>msg[1].payload</code><td>eq. <code>msg.power</code></td></tr>
+      <tr><td><code>msg[2].payload</code><td>eq. <code>msg.energy_in_co2</code></td></tr>
+      <tr><td><code>msg[3].payload</code><td>Formats a message that fits to <em>InfluxDB Batch</em> nodes containing all variable fields.</td></tr>
+    </table>
+</script>
