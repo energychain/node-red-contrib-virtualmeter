@@ -41,6 +41,11 @@ If <code>msg.payload.power_mw</code> exists this will be used as average power (
 [{"id":"3102f4c5.b60a7c","type":"tab","label":"Sample Flow - TP Link HS 110","disabled":false,"info":"Use Virtual Meter On Top of TP Link HS110 Smart Plug meter."},{"id":"bf814178.8ccf9","type":"virtualmeter","z":"3102f4c5.b60a7c","zip":"69256","name":null,"energypricein":0,"energypriceout":0,"x":850,"y":140,"wires":[[],[],[],[]]},{"id":"b3db7484.5dd808","type":"smart-plug","z":"3102f4c5.b60a7c","name":"My Plug","device":"192.168.192.39","interval":10000,"eventInterval":1000,"x":660,"y":140,"wires":[["bf814178.8ccf9"]]},{"id":"888ddfd8.a5484","type":"function","z":"3102f4c5.b60a7c","name":"getMeterInfo","func":"msg.payload=\"getMeterInfo\";\nreturn msg;","outputs":1,"noerr":0,"x":450,"y":140,"wires":[["b3db7484.5dd808"]]},{"id":"79ea072c.2822e8","type":"inject","z":"3102f4c5.b60a7c","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":240,"y":140,"wires":[["888ddfd8.a5484"]]}]
 ```
 
+### Use with AVM FRITZ!DECT 200 Smart plug
+```javascript
+[{"id":"3102f4c5.b60a7c","type":"tab","label":"AVM Fritz DECT 200 Smart Plug","disabled":false,"info":"Use with a Smartplug connected to a fritz box. You need to set the AIN corretly!"},{"id":"bf814178.8ccf9","type":"virtualmeter","z":"3102f4c5.b60a7c","zip":"69256","name":null,"energypricein":0,"energypriceout":0,"x":850,"y":140,"wires":[[],[],[],[]]},{"id":"888ddfd8.a5484","type":"function","z":"3102f4c5.b60a7c","name":"set AIN","func":"msg.ain=\"087610221618\";\nmsg.payload.ain = \"087610221618\";\nreturn msg;","outputs":1,"noerr":0,"x":440,"y":140,"wires":[["b994e93e.0230b8"]]},{"id":"79ea072c.2822e8","type":"inject","z":"3102f4c5.b60a7c","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":240,"y":140,"wires":[["888ddfd8.a5484"]]},{"id":"b994e93e.0230b8","type":"fritz-outlet","z":"3102f4c5.b60a7c","connection":"345a47c4.06ab38","name":"Get Poweer","action":"getSwitchPower","x":650,"y":140,"wires":[["bf814178.8ccf9"]]},{"id":"345a47c4.06ab38","type":"fritz-api","z":"","name":"Home","host":"http://192.168.192.1","strictSSL":false}]
+```
+
 
 ## Meta
 Released by STROMDAO GmbH, Gerhard Weiser Ring 29, 69256 Mauer
