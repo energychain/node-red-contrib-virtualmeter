@@ -25,7 +25,7 @@ module.exports = function(RED) {
               energy_cost_in: 0,
               energy_cost_out: 0,
               timeStamp: ts,
-              meterId: node.id + "_" + node.z
+              meterId: node.id
             }
 
             for(let i=0;i<meterIds.length;i++) {
