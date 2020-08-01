@@ -26,6 +26,8 @@ module.exports = function(RED) {
             if(isNaN(energy_cost_in)) energy_cost_in = 0;
             if(isNaN(energy_cost_out)) energy_cost_out = 0;
             if(isNaN(power)) power = 0;
+
+
             if(isNaN(updated)) {
               updated = ts;
               node.context().set("first_reading",ts);
@@ -122,8 +124,12 @@ module.exports = function(RED) {
               account_in: node.context().get('energy_in_account'),
               account_out: node.context().get('energy_out_account'),
               zip: config.zip,
-              timeStamp: ts
+              timeStamp: ts,
+              name: config.name,
+              consumption: config.isconsumption,
+              meterId: (node.id).replace('.','_')
             }
+
             let msg1 = _.clone(tmp_msg);
             msg1.payload = tmp_msg.energy;
             msg1.topic = 'Energy';

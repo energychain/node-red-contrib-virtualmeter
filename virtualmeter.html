@@ -1,18 +1,19 @@
 <script type="text/javascript">
     RED.nodes.registerType('virtualmeter',{
         category: 'Corrently',
-        color: '#006C32',
+        color: '#C7E9C0',
         defaults: {
             zip: {value:"69256"},
             name: {value: null},
             energypricein: {value: 0},
-            energypriceout: {value: 0}
+            energypriceout: {value: 0},
+            isconsumption: {value: true}
         },
         inputs:1,
         outputs:4,
         icon: "bridge-dash.png",
         label: function() {
-            return 'VirtualMeter';
+            return this.name||"VirtualMeter";
         }
     });
 </script>
@@ -25,6 +26,10 @@
     <div class="form-row">
         <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
         <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+    <div class="form-row">
+          <label for="node-input-isconsumption"><i class="icon-tag"></i> Verbrauchszähler (keine Erzeugung)</label>
+          <input type="checkbox" id="node-input-isconsumption" >
     </div>
     <div class="form-row">
           <label for="node-input-energypricein"><i class="icon-tag"></i> Energiepreis pro kWh (Bezug/In)</label>

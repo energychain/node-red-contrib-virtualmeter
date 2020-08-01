@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('summeter',{
+        category: 'Corrently',
+        color: '#C7E9C0',
+        defaults: {
+            name: {value: null}
+        },
+        inputs:1,
+        outputs:4,
+        icon: "bridge-dash.png",
+        label: function() {
+            return this.name||"SumMeter";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="summeter">
+    <div class="form-row">
+          <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+          <input type="text" id="node-input-name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="summeter">
+    <p>Creates a summized meter out of multiple single meters (eq. aggregation)</p>
+</script>
