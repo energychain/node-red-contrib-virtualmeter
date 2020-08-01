@@ -89,7 +89,7 @@ module.exports = function(RED) {
             node.context().set("energy_out",tmp_msg.energy_out);
             node.context().set("energy_cost_in",tmp_msg.energy_cost_in);
             node.context().set("energy_cost_out",tmp_msg.energy_cost_out);
-            node.context().set("power",power);
+            node.context().set("power",Math.round(tmp_msg.power));
             node.context().set("updated", ts);
 
             node.send(msgs);
