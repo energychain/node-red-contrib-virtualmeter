@@ -77,12 +77,21 @@ module.exports = function(RED) {
               energy_in_co2:   tmp_msg.energy_in_co2,
               energy_out_co2:  tmp_msg.energy_out_co2
             }
+
+
             point.timestamp = (ts * 1000000) ;
             payload.push(point);
             msg4.payload = payload;
             msg4.topic = 'InfluxDB';
             msgs.push(msg4);
             node.status({text:"Power: "+Math.round(tmp_msg.power)+"W  Energy:"+ Math.round(tmp_msg.energy) +" Wh"});
+            node.context().set("energy_in",tmp_msg.energy_in);
+            node.context().set("energy_out",tmp_msg.energy_out);
+            node.context().set("energy_cost_in",tmp_msg.energy_cost_in);
+            node.context().set("energy_cost_out",tmp_msg.energy_cost_out);
+            node.context().set("power",power);
+            node.context().set("updated", ts);
+
             node.send(msgs);
 
         });
