@@ -36,8 +36,8 @@ module.exports = function(RED) {
               tmp_msg.power += node.context().get(meterIds[i]).power * multipl;
               tmp_msg.energy_in += node.context().get(meterIds[i]).energy_in * multipl;
               tmp_msg.energy_out += node.context().get(meterIds[i]).energy_out * multipl;
-              tmp_msg.energy_in_co2 += node.context().get(meterIds[i]).energy_in_co2 * multipl;
-              tmp_msg.energy_out_co2 += node.context().get(meterIds[i]).energy_out_co2 * multipl;
+              if(!isNaN(node.context().get(meterIds[i]).energy_in_co2)) tmp_msg.energy_in_co2 += node.context().get(meterIds[i]).energy_in_co2 * multipl;
+              if(!isNaN(node.context().get(meterIds[i]).energy_out_co2)) tmp_msg.energy_out_co2 += node.context().get(meterIds[i]).energy_out_co2 * multipl;
               tmp_msg.energy_cost_in += node.context().get(meterIds[i]).energy_cost_in * multipl;
               tmp_msg.energy_cost_out += node.context().get(meterIds[i]).energy_cost_out * multipl;
             }
