@@ -127,8 +127,11 @@ module.exports = function(RED) {
               }
 
               // run prediction of upcomming 48 hours
-              let ts = new Date().getTime();
-
+              let date = new Date();
+              date.setMinutes(0);
+              date.setSeconds(0);
+              date.setMilliseconds(0);
+              let ts = date.getTime();
               let predictions = [];
               for(let i=0;i<48;i++) {
                 // classes
