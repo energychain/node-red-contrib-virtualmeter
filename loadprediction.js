@@ -13,6 +13,11 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', async function(msg) {
+                let energy_reading = 0;
+                let energy_request = await node.client.query('select last("energy") from e0consumption',{});
+                if(energy_request.length > 0) {
+                  energy_reading = energy_request[0].last;
+                }
                 let query = 'SELECT mean("power"),stddev("power"),min("power"),max("power") FROM "'+config.name+'" WHERE time>now()-7d GROUP BY time(1h) fill(previous)';
                 let results = await node.client.query(query, {});
                 let cleaned = [];
@@ -184,10 +189,12 @@ module.exports = function(RED) {
                         srcs.push("hour_stats");
                     }
                 }
+                energy_reading += power;
 
                 let prediction = {
                     time: new Date(ts),
                     mean: power,
+                    energy: energy_reading,
                     srcs: srcs
                 };
 
@@ -207,7 +214,8 @@ module.exports = function(RED) {
                   batch.push({
                     measurement: measurement,
                     fields: {
-                      power: predictions[i].mean
+                      power: predictions[i].mean,
+                      energy: predictions[i].energy
                     },
                     timestamp: new Date(predictions[i].time).getTime() * 1000000
                   });
