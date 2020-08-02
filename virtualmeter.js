@@ -163,7 +163,7 @@ module.exports = function(RED) {
               energy_cost_out: energy_cost_out,
               energy_in_co2: node.context().get('energy_in_co2'),
               energy_out_co2:  node.context().get('energy_out_co2'),
-              gsi:node.context().get("eneryy_in_9_99_0");
+              gsi:node.context().get("energy_in_9_99_0")
             }
             if(typeof point.fields.energy_in_co2 === "undefined") delete point.fields.energy_in_co2;
             if(typeof point.fields.energy_out_co2 === "undefined") delete point.fields.energy_out_co2;
