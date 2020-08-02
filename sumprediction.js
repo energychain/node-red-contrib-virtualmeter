@@ -19,11 +19,11 @@ module.exports = function(RED) {
 
           for(let i=0;i<72;i++) {
               let point = {};
-              let query = 'select mean(power) from e0generation_prediction where time>='+ts+'000000 and time<='+(ts+3600000)+'000000 GROUP BY time(1h) fill(linear)';
+              let query = 'select mean(power) from '+config.generation+' where time>='+ts+'000000 and time<='+(ts+3600000)+'000000 GROUP BY time(1h) fill(linear)';
               let results = await node.client.query(query, {});
               if(results.length >0) {
                   let generation = results[0].mean;
-                  query = 'select mean(power) from e0consumption_prediction where time>='+ts+'000000 and time<='+(ts+3600000)+'000000 GROUP BY time(1h) fill(linear)';
+                  query = 'select mean(power) from '+config.consumption+' where time>='+ts+'000000 and time<='+(ts+3600000)+'000000 GROUP BY time(1h) fill(linear)';
                   results = await node.client.query(query, {});
                   if(results.length > 0) {
                     let consumption = results[0].mean;
