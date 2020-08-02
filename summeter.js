@@ -24,6 +24,7 @@ module.exports = function(RED) {
               energy_out_co2:  0,
               energy_cost_in: 0,
               energy_cost_out: 0,
+              gsi: 50,
               timeStamp: ts,
               meterId: (node.id).replace('.','_')
             }
@@ -39,6 +40,7 @@ module.exports = function(RED) {
                   tmp_msg.energy_out += node.context().get(meterIds[i]).energy_out * multipl;
                   if(!isNaN(node.context().get(meterIds[i]).energy_in_co2)) tmp_msg.energy_in_co2 += node.context().get(meterIds[i]).energy_in_co2 * multipl;
                   if(!isNaN(node.context().get(meterIds[i]).energy_out_co2)) tmp_msg.energy_out_co2 += node.context().get(meterIds[i]).energy_out_co2 * multipl;
+                  if(!isNaN(node.context().get(meterIds[i]).gsi)) tmp_msg.gsi = node.context().get(meterIds[i]).gsi;
                   tmp_msg.energy_cost_in += node.context().get(meterIds[i]).energy_cost_in * multipl;
                   tmp_msg.energy_cost_out += node.context().get(meterIds[i]).energy_cost_out * multipl;
                 }
@@ -78,7 +80,8 @@ module.exports = function(RED) {
               energy_cost_in: tmp_msg.energy_cost_in,
               energy_cost_out: tmp_msg.energy_cost_out,
               energy_in_co2:   tmp_msg.energy_in_co2,
-              energy_out_co2:  tmp_msg.energy_out_co2
+              energy_out_co2:  tmp_msg.energy_out_co2,
+              gsi: tmp_msg.gsi
             }
 
 
@@ -93,6 +96,7 @@ module.exports = function(RED) {
             node.context().set("energy_cost_in",tmp_msg.energy_cost_in);
             node.context().set("energy_cost_out",tmp_msg.energy_cost_out);
             node.context().set("power",Math.round(tmp_msg.power));
+            node.context().set("gsi",tmp_msg.gsi);
             node.context().set("updated", ts);
 
             node.send(msgs);

@@ -123,6 +123,7 @@ module.exports = function(RED) {
               energy_cost_out: energy_cost_out,
               account_in: node.context().get('energy_in_account'),
               account_out: node.context().get('energy_out_account'),
+              gsi:node.context().get("energy_in_9_99_0"),
               zip: config.zip,
               timeStamp: ts,
               name: config.name,
