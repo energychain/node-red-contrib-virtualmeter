@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-virtualmeter",
-  "version": "0.5.13",
+  "version": "0.5.14",
   "description": "Virtual Meter Node to be used within Corrently Ecosystem (German Electricity Grid)",
   "main": "virtualmeter.js",
   "scripts": {
@@ -34,12 +34,14 @@
   "dependencies": {
     "axios": "^0.19.2",
     "lodash": "^4.17.19",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "influx": "5.5.2"
   },
   "node-red": {
     "nodes": {
       "virtualmeter": "virtualmeter.js",
-      "summeter": "summeter.js"
+      "summeter": "summeter.js",
+      "loadprediction": "loadprediction.js"
     }
   }
 }

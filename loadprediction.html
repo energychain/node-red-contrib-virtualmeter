@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('loadprediction',{
+        category: 'Corrently',
+        color: '#C7E9C0',
+        defaults: {
+            name: {value: null},
+            influxdb: {type: "influxdb", required: true}
+        },
+        inputs:1,
+        outputs:2,
+        icon: "timer.svg",
+        label: function() {
+            return this.name||"LoadPrediction";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="loadprediction">
+  <div class="form-row">
+    <label for="node-input-influxdb"><i class="fa fa-server"></i> <span data-i18n="influxdb.label.server"></span></label>
+    <input type="text" id="node-input-influxdb">
+  </div>
+    <div class="form-row">
+          <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+          <input type="text" id="node-input-name" placeholder="(Name of Measurement of a VirtualMeter in InfluxDB eq. e0consumption)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="loadprediction">
+    <p>Creates a load-prediction as <code>output[0]<code> and a influxDB batch as <code>output[1]<code></p>
+</script>
