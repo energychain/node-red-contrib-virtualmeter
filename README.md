@@ -1,6 +1,5 @@
 # node-red-contrib-virtualmeter
 
-![Hex.pm](https://img.shields.io/hexpm/l/node-red-contrib-virtualmeter)
 ![npm](https://img.shields.io/npm/dw/node-red-contrib-virtualmeter)
 
 

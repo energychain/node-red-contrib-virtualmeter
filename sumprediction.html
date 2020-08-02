@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sumprediction',{
+        category: 'Corrently',
+        color: '#C7E9C0',
+        defaults: {
+            name: {value: null,required:true},
+            influxdb: {type: "influxdb", required: true},
+            generation: {type: "string", value:"e0generation_prediction",required:true},
+            consumption: {type: "string", value:"e0consumption_prediction",required:true},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "timer.svg",
+        label: function() {
+            return this.name||"SumPrediction";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sumprediction">
+  <div class="form-row">
+    <label for="node-input-influxdb"><i class="fa fa-server"></i> <span data-i18n="influxdb.label.server"></span></label>
+    <input type="text" id="node-input-influxdb">
+  </div>
+    <div class="form-row">
+          <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+          <input type="text" id="node-input-name" placeholder="(Name of Measurement of a VirtualMeter in InfluxDB eq. e0generation)">
+    </div>
+    <div class="form-row">
+          <label for="node-input-generation"><i class="icon-tag"></i> Generation Prediction</label>
+          <input type="text" id="node-input-generation" placeholder="(eq. e0generation_prediction)">
+    </div>
+    <div class="form-row">
+          <label for="node-input-consumption"><i class="icon-tag"></i> Consumption Prediction</label>
+          <input type="text" id="node-input-consumption" placeholder="(eq. e0consumption_prediction)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="sumprediction">
+    <p>Ads up two forecasts (eq. consumption and generation) and provides influxDB batch as <code>output<code></p>
+</script>
