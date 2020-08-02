@@ -164,6 +164,9 @@ module.exports = function(RED) {
               energy_in_co2: node.context().get('energy_in_co2'),
               energy_out_co2:  node.context().get('energy_out_co2')
             }
+            if(typeof point.fields.energy_in_co2 === "undefined") delete point.fields.energy_in_co2;
+            if(typeof point.fields.energy_out_co2 === "undefined") delete point.fields.energy_out_co2;
+
             point.timestamp = (ts * 1000000) ;
             payload.push(point);
             msg4.payload = payload;

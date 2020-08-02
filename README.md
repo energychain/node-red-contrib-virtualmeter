@@ -4,7 +4,7 @@
 ![npm](https://img.shields.io/npm/dw/node-red-contrib-virtualmeter)
 
 
-Node-RED based Virtual Power Meter Node to be used within Corrently Ecosystem (German Electricity Grid).
+Node-RED based Virtual Power Meter Node to be used within Corrently Ecosystem (German Electricity Grid). Prepared for load (consumption) prediction and PV generation forecast. Uses InfluxDB and GreenPowerIndex under the hood.
 
 ## Installation
 ```bash
@@ -53,6 +53,9 @@ If <code>msg.payload.power_mw</code> exists this will be used as average power (
 
 ## Node: LoadPrediction
 Allows to get a load prediction for energy consumers. This is a quite simple forecast implemenetation that mainly focuses on data stored into an influxDB using a VirtualMeter Node.
+
+## Funding
+This module is part of the Corrently Ecosystem which looks for funding in Germany:  https://www.stromdao.de/crowdfunding/info
 
 ## Meta
 Released by STROMDAO GmbH, Gerhard Weiser Ring 29, 69256 Mauer
