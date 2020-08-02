@@ -14,7 +14,7 @@ module.exports = function(RED) {
 
         node.on('input', async function(msg) {
                 let energy_reading = 0;
-                let energy_request = await node.client.query('select last("energy") from e0consumption',{});
+                let energy_request = await node.client.query('select last("energy") from '+config.name,{});
                 if(energy_request.length > 0) {
                   energy_reading = energy_request[0].last;
                 }
