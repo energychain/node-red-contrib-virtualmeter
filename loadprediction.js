@@ -138,7 +138,7 @@ module.exports = function(RED) {
               date.setMilliseconds(0);
               let ts = date.getTime();
               let predictions = [];
-              for(let i=0;i<48;i++) {
+              for(let i=0;i<72;i++) {
                 // classes
                 let hour = new Date(ts).getHours();
                 let day = new Date(ts).getDay();
@@ -165,7 +165,7 @@ module.exports = function(RED) {
                         srcs.push("weekend_day");
                     }
                     if(cnt === 0) {
-                        power += class_weekend.subclasses.hour.stats.mean;
+                        power += class_weekend.stats.mean;
                         cnt++;
                         srcs.push("weekend_stats");
                     }
