@@ -46,6 +46,8 @@ module.exports = function(RED) {
                 }
               }
             }
+            if(config.isconsumption) tmp_msg.power *= -1;
+
             let msgs = [];
 
             let msg1 = _.clone(tmp_msg);
@@ -81,6 +83,7 @@ module.exports = function(RED) {
               energy_cost_out: tmp_msg.energy_cost_out,
               energy_in_co2:   tmp_msg.energy_in_co2,
               energy_out_co2:  tmp_msg.energy_out_co2,
+              consumption: config.isconsumption,
               gsi: tmp_msg.gsi
             }
 
