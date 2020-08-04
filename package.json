@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-virtualmeter",
-  "version": "0.5.26",
+  "version": "0.5.27",
   "description": "Virtual Meter Node to be used within Corrently Ecosystem (German Electricity Grid)",
   "main": "virtualmeter.js",
   "scripts": {

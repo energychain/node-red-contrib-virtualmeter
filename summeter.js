@@ -88,7 +88,7 @@ module.exports = function(RED) {
             }
 
             if((typeof config.isconsumption === "undefined") || (config.isconsumption === null)) {
-              point.consumption = false;
+              point.fields.consumption = false;
             }
             point.timestamp = (ts * 1000000) ;
             payload.push(point);
