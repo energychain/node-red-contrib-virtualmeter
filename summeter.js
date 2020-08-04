@@ -87,7 +87,9 @@ module.exports = function(RED) {
               gsi: tmp_msg.gsi
             }
 
-
+            if((typeof config.isconsumption === "undefined") || (config.isconsumption === null)) {
+              point.consumption = false;
+            }
             point.timestamp = (ts * 1000000) ;
             payload.push(point);
             msg4.payload = payload;
