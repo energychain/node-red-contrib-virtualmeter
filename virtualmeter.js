@@ -131,6 +131,15 @@ module.exports = function(RED) {
               meterId: (node.id).replace('.','_')
             }
 
+            if(config.ishybrid) {
+              if(tmp_msg.power < 0) {
+                  tmp_msg.consumption = false;
+              } else {
+                  tmp_msg.consumption = true;
+              }
+            }
+
+
             let msg1 = _.clone(tmp_msg);
             msg1.payload = tmp_msg.energy;
             msg1.topic = 'Energy';

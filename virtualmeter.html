@@ -7,7 +7,8 @@
             name: {value: null},
             energypricein: {value: 0},
             energypriceout: {value: 0},
-            isconsumption: {value: true}
+            isconsumption: {value: true},
+            ishybrid: {value: false}
         },
         inputs:1,
         outputs:4,
@@ -30,6 +31,10 @@
     <div class="form-row">
           <label for="node-input-isconsumption"><i class="icon-tag"></i> Verbrauchszähler (keine Erzeugung)</label>
           <input type="checkbox" id="node-input-isconsumption" >
+    </div>
+    <div class="form-row">
+          <label for="node-input-ishybrid"><i class="icon-tag"></i> Hybridzähler (Speicher/Zwei-Wegezähler)</label>
+          <input type="checkbox" id="node-input-ishybrid" >
     </div>
     <div class="form-row">
           <label for="node-input-energypricein"><i class="icon-tag"></i> Energiepreis pro kWh (Bezug/In)</label>
